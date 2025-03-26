@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">Ekszer</string>
+    <string name="app_name">Ék-Szer Üzlet</string>
+    <string name="username">Felhasználónév</string>
+    <string name="password">Jelszó</string>
+    <string name="login">Bejelentkezés</string>
+    <string name="register">Regisztráció</string>
+    <string name="email">E-mail cím</string>
+    <string name="password_re">Jelszó ismét</string>
+    <string name="fullname">Teljes név</string>
+    <string name="welcome">Üdvözöljük!</string>
 </resources>
