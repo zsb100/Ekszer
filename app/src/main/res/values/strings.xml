@@ -8,4 +8,59 @@
     <string name="password_re">Jelszó ismét</string>
     <string name="fullname">Teljes név</string>
     <string name="welcome">Üdvözöljük!</string>
+    <string name="addToCart">Kosárba</string>
+    <string name="details">Részletek</string>
+    <string name="logout">Kijelentkezés</string>
+    <string name="cart">Kosár</string>
+
+    <string-array name="item_names">
+        <item>Vaskarika</item>
+        <item>Gyűrű-kura</item>
+        <item>Gyűrűség</item>
+        <item>Aranyharmónia</item>
+        <item>Gyaklac</item>
+        <item>Kiskarika</item>
+        <item>bikakábel</item>
+    </string-array>
+
+    <string-array name="item_descriptions">
+        <item>Vaskarika vasból készül, basic.</item>
+        <item>Drágaszágom legszebb ékszége </item>
+        <item>Kerek egééész bárhova mész</item>
+        <item>Harmónikas harmónika HÁ MÓÓNII</item>
+        <item>elado arangy gyaklac</item>
+        <item>Kicsi is kerek is nem mondom mi ez</item>
+        <item>tesó ez ríízbű va</item>
+    </string-array>
+
+    <array name="item_rates">
+        <item>3.5</item>
+        <item>5</item>
+        <item>4</item>
+        <item>1.5</item>
+        <item>5</item>
+        <item>3</item>
+        <item>4.5</item>
+    </array>
+
+    <string-array name="item_prices">
+        <item>1000 píz</item>
+        <item>2000 píz</item>
+        <item>3000 píz</item>s
+        <item>4000 píz</item>
+        <item>5000 píz</item>
+        <item>6000 píz</item>
+        <item>7000 píz</item>
+    </string-array>
+
+    <array name="item_images">
+        <item>@drawable/prod01</item>
+        <item>@drawable/prod02</item>
+        <item>@drawable/prod03</item>
+        <item>@drawable/prod04</item>
+        <item>@drawable/prod05</item>
+        <item>@drawable/prod06</item>
+        <item>@drawable/prod07</item>
+    </array>
+
 </resources>

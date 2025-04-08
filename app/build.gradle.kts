@@ -43,4 +43,10 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     implementation(platform("com.google.firebase:firebase-bom:33.11.0"))
+    implementation("com.google.firebase:firebase-firestore:25.1.3")
+    implementation("com.android.support:multidex:1.0.3")
+    implementation("androidx.recyclerview:recyclerview:1.4.0")
+    implementation("androidx.cardview:cardview:1.0.0")
+    implementation("com.github.bumptech.glide:glide:4.15.1")
+    implementation("androidx.recyclerview:recyclerview-selection:1.1.0")
 }
