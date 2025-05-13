@@ -7,8 +7,12 @@
         app:showAsAction="always"
         android:title="@string/cart"
         android:icon="@drawable/baseline_shopping_cart_24" />
-<!--        app:actionLayout="@layout/custom_menu_item"-->
 
+    <item
+        android:id="@+id/profile_button"
+        app:showAsAction="always"
+        android:title="@string/profile"
+        android:icon="@drawable/outline_boy_24" />
 
     <item
         android:id="@+id/log_out_button"

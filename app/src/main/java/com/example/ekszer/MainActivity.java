@@ -1,5 +1,6 @@
 package com.example.ekszer;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -45,9 +46,15 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
     }
 
+    @SuppressLint("NewApi")
     public void login(View view) {
         Intent shopIntent = new Intent(this, ShopActivity.class);
         shopIntent.putExtra("SECRET_KEY", SECRET_KEY);
+
+        if (emailET.getText().isEmpty() || passwordET.getText().isEmpty()) {
+            Toast.makeText(this, "Kérjük, töltse ki az összes mezőt!", Toast.LENGTH_LONG).show();
+            return;
+        }
 
         mAuth.signInWithEmailAndPassword(emailET.getText().toString(), passwordET.getText().toString()).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override

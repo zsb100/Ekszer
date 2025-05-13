@@ -12,6 +12,8 @@
     <string name="details">Részletek</string>
     <string name="logout">Kijelentkezés</string>
     <string name="cart">Kosár</string>
+    <string name="profile">Profil</string>
+    <string name="back">Vissza\n</string>
 
     <string-array name="item_names">
         <item>Vaskarika</item>

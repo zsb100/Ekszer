@@ -44,10 +44,9 @@ public class ItemAdapter
 
     @Override
     public void onBindViewHolder(ItemAdapter.ViewHolder holder, int position) {
-        // Get current sport.
+
         Item currentItem = mShoppingData.get(position);
 
-        // Populate the textviews with data.
         holder.bindTo(currentItem);
 
 

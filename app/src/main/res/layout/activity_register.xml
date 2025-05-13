@@ -28,7 +28,7 @@
             android:layout_margin="10dp"
             android:autofillHints="name"
             android:hint="@string/fullname"
-            android:inputType="text" />
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/username"
@@ -71,7 +71,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:onClick="register"
-            android:text="@string/register" />
+            android:text="@string/register"
+            style="@style/PrimaryButtonStyle"/>
 
         <Button
             android:layout_width="match_parent"
