@@ -1,15 +1,23 @@
 package com.example.ekszer;
 
+import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -47,6 +55,8 @@ public class ProfileActivity extends AppCompatActivity {
             actionBar.setDisplayShowHomeEnabled(true);
         }
 
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.showup);
+
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
 
@@ -62,6 +72,7 @@ public class ProfileActivity extends AppCompatActivity {
             if (task.isSuccessful()){
                 if (task.getResult() != null && !task.getResult().isEmpty()) {
                     userObject = task.getResult().getDocuments().get(0).toObject(User.class);
+                    userObject._setId(task.getResult().getDocuments().get(0).getId());
                     fillData();
                 } else {
                     Toast.makeText(this, "Hiba történt", Toast.LENGTH_LONG).show();
@@ -70,6 +81,11 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+        LinearLayout layout = findViewById(R.id.main);
+
+        layout.setVisibility(View.VISIBLE);
+
+        layout.startAnimation(animation);
 
     }
 
@@ -90,15 +106,13 @@ public class ProfileActivity extends AppCompatActivity {
 
         if ( item.getItemId() == R.id.log_out_button) {
             mAuth.signOut();
-            Intent intent = new Intent(this, MainActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-            finishAffinity();
+            logout_redirect();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
 
     public void fillData(){
         TextView name = findViewById(R.id.profile_fullname);
@@ -110,5 +124,52 @@ public class ProfileActivity extends AppCompatActivity {
         username.setText(getText(R.string.username) + ": " +userObject.getUsername());
     }
 
+    public void logout_redirect(){
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finishAffinity();
+    }
 
+
+    public void saveEdit(View view) {
+
+        String newName = ((EditText) findViewById(R.id.fullname_edit)).getText().toString();
+
+        userObject.setName(newName);
+
+        mUsers.document(userObject._getId()).set(userObject).addOnCompleteListener(task -> {
+            if (task.isSuccessful()){
+                Toast.makeText(this, "Sikeres mentés", Toast.LENGTH_LONG).show();
+                ((TextView) findViewById(R.id.profile_fullname)).setText(getText(R.string.fullname) + ": " +  userObject.getName());
+            } else {
+                Log.d(TAG, "saveEdit: " + task.getException());
+                Toast.makeText(this, "Hiba történt", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    public void deleteAccount(View view) {
+
+        new AlertDialog.Builder(this)
+                .setTitle("Törlés megerősítése")
+                .setMessage("Biztosan törölni szeretné fiókját? Ez nem vonható vissza.")
+                .setPositiveButton("Törlés", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        mUsers.document(userObject._getId()).delete().addOnCompleteListener(task -> {
+                            if (task.isSuccessful()){
+                                mAuth.getCurrentUser().delete();
+                                logout_redirect();
+                            } else {
+                                Log.d(TAG, "deleteAccount: " + task.getException());
+                                Toast.makeText(ProfileActivity.this, "Hiba történt", Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    }
+                })
+                .setNegativeButton("Mégse", null)
+                .show();
+
+
+    }
 }

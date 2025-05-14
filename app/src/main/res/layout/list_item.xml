@@ -49,28 +49,28 @@
             android:layout_marginBottom="12dp"
             android:padding="8dp" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/price"
-            android:orientation="horizontal"
-            android:layout_centerHorizontal="true">
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/price"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_centerHorizontal="true">-->
 
-            <Button
-                android:id="@+id/add_to_cart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/addToCart" />
+<!--            <Button-->
+<!--                android:id="@+id/add_to_cart"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/addToCart" />-->
 
-            <Button
-                android:id="@+id/details"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="@string/details"
-                style="@style/PrimaryButtonStyle"/>
+<!--            <Button-->
+<!--                android:id="@+id/details"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="8dp"-->
+<!--                android:text="@string/details"-->
+<!--                style="@style/PrimaryButtonStyle"/>-->
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

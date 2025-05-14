@@ -75,6 +75,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         if (!passwordET.getText().toString().equals(password_reET.getText().toString())) {
             Toast.makeText(RegisterActivity.this, "A két jelszó nem egyezik!", Toast.LENGTH_SHORT).show();
+            return;
         }
 
         mUsers.whereEqualTo("email", emailET.getText().toString()).get().addOnSuccessListener(query -> {

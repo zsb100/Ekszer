@@ -45,11 +45,6 @@ public class ShopActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_shop);
-//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-//            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-//            return insets;
-//        });
 
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
@@ -63,7 +58,6 @@ public class ShopActivity extends AppCompatActivity {
                 this, 1));
         mItemsData = new ArrayList<>();
 
-        // Initialize the adapter and set it to the RecyclerView.
         mAdapter = new ItemAdapter(this, mItemsData);
         mRecyclerView.setAdapter(mAdapter);
 
@@ -132,11 +126,11 @@ public class ShopActivity extends AppCompatActivity {
         // Create the ArrayList of Sports objects with the titles and
         // information about each sport.
         for (int i = 0; i < itemsList.length; i++) {
-            int imgId = itemsImageResources.getResourceId(i, 0);
+            String imageName = getResources().getResourceEntryName(itemsImageResources.getResourceId(i, 0));
             mItems.add(new Item(
                     itemsList[i],
                     itemsInfo[i],
-                    imgId,
+                    imageName,
                     itemsPrice[i],
                     itemRate.getFloat(i, 0)
             ));

@@ -14,6 +14,9 @@
     <string name="cart">Kosár</string>
     <string name="profile">Profil</string>
     <string name="back">Vissza\n</string>
+    <string name="edit_fullname">Név szerkesztése</string>
+    <string name="save">Mentés</string>
+    <string name="delete_acc">Fiók törlése</string>
 
     <string-array name="item_names">
         <item>Vaskarika</item>

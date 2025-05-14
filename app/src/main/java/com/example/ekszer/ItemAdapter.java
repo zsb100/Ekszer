@@ -51,7 +51,7 @@ public class ItemAdapter
 
 
         if(holder.getAdapterPosition() > lastPosition) {
-            Animation animation = AnimationUtils.loadAnimation(mContext, R.anim.showup);
+            Animation animation = AnimationUtils.loadAnimation(mContext, R.anim.slide_in_row);
             holder.itemView.startAnimation(animation);
             lastPosition = holder.getAdapterPosition();
         }
@@ -63,9 +63,6 @@ public class ItemAdapter
     }
 
 
-    /**
-     * RecycleView filter
-     * **/
     @Override
     public Filter getFilter() {
         return shoppingFilter;
@@ -103,7 +100,6 @@ public class ItemAdapter
     };
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        // Member Variables for the TextViews
         private TextView mTitleText;
         private TextView mInfoText;
         private TextView mPriceText;
@@ -113,14 +109,12 @@ public class ItemAdapter
         ViewHolder(View itemView) {
             super(itemView);
 
-            // Initialize the views.
             mTitleText = itemView.findViewById(R.id.itemTitle);
             mInfoText = itemView.findViewById(R.id.subTitle);
             mItemImage = itemView.findViewById(R.id.itemImage);
             mRatingBar = itemView.findViewById(R.id.ratingBar);
             mPriceText = itemView.findViewById(R.id.price);
 
-            // itemView.findViewById(R.id.add_to_cart).setOnClickListener(view -> ((ShopActivity)mContext).updateAlertIcon());
         }
 
         void bindTo(Item currentItem){
@@ -130,8 +124,17 @@ public class ItemAdapter
             mPriceText.setText(currentItem.getPrice());
             mRatingBar.setRating(currentItem.getRating());
 
-            // Load the images into the ImageView using the Glide library.
-            Glide.with(mContext).load(currentItem.getImageUrl()).into(mItemImage);
+            int resId = mContext.getResources().getIdentifier(currentItem.getImageUrl(), "drawable", mContext.getPackageName());
+
+            Glide.with(mContext).clear(mItemImage);
+
+            Glide.with(mContext)
+                    .load(resId)
+                    .placeholder(R.drawable.outline_assignment_late_24)
+                    .error(R.drawable.outline_assignment_late_24)
+                    .fallback(R.drawable.outline_assignment_late_24)
+                    .into(mItemImage);
+
         }
     }
 }

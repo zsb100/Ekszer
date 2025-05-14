@@ -4,12 +4,12 @@ public class Item {
 
     private String name;
     private String description;
-    private int imageUrl;
+    private String imageUrl;
     private String price;
     private float rating;
 
 
-    public Item(String name, String description, int imageRes, String price, float rating) {
+    public Item(String name, String description, String imageRes, String price, float rating) {
         this.name = name;
         this.description = description;
         this.imageUrl = imageRes;
@@ -21,7 +21,7 @@ public class Item {
 
         this.name = "";
         this.description = "";
-        this.imageUrl = 0;
+        this.imageUrl = "";
         this.price = "";
         this.rating = 0.0f;
 
@@ -35,7 +35,7 @@ public class Item {
         return description;
     }
 
-    public int getImageUrl() {
+    public String getImageUrl() {
         return imageUrl;
     }
 
@@ -47,7 +47,7 @@ public class Item {
         return rating;
     }
 
-    public void setImageUrl(int imageRes) {
+    public void setImageUrl(String imageRes) {
         this.imageUrl = imageRes;
     }
 }
